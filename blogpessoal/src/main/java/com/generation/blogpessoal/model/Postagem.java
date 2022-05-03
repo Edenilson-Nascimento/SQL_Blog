@@ -8,9 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
 import org.hibernate.annotations.UpdateTimestamp;
+
+
 
 @Entity // cia a tabela
 @Table(name = "tb_postagens")// nome
@@ -25,12 +29,14 @@ public class Postagem {
 	private String titulo;
 	
 
-	@NotBlank(message = "O atributo texto é obrigatório!")
+	@NotNull(message = "O atributo texto é obrigatório!")
 	@Size(min = 10, max = 1000, message = "O atributo texto de conter no minimo 10 e no máximo 1000 caracter")
 	private  String texto;
 	
 	@UpdateTimestamp
 	private LocalDateTime data;
+	
+
 
 	public Long getId() {
 		return id;
